@@ -95,6 +95,10 @@ body {
   }
 }
 
+.hidden {
+  display: none;
+}
+
 /* button styling */
 
 .start-button {
