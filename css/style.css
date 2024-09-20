@@ -20,6 +20,8 @@ body {
 .card {
   color: rgba(91, 87, 83, 0.868);
   border-color: goldenrod;
+  height: 30px;
+  width: 20px;
   border-width: 5px;
   backface-visibility: hidden; /* only see one side of card */
 }
@@ -122,8 +124,6 @@ body {
 .flip-cards {
   transition: all 1s; /* smooth animations */
   perspective: 600px; /*3D effect supposedly */
-  height: 30px;
-  width: 20px;
 }
 
 /* styling for timer, headers, game messages, etc */
