@@ -1,0 +1,145 @@
+body {
+  margin: 0;
+}
+
+.stage {
+  /* neutral color for the page BG */
+  background-color: beige;
+  min-width: 100vh;
+  min-height: 100vh;
+  display: grid;
+
+  /* grid size 4x3 */
+
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto auto auto;
+}
+
+/* color for 'facedown' cards */
+
+.card {
+  color: rgba(91, 87, 83, 0.868);
+  border-color: goldenrod;
+  border-width: 5px;
+  backface-visibility: hidden; /* only see one side of card */
+}
+
+/* Six color pairs for the cards with black text on each*/
+
+.card-text {
+  color: black;
+  font-size: 20px;
+}
+
+.flipped {
+  #card1 {
+    background-color: orange;
+    border-color: orange;
+  }
+
+  #card2 {
+    background-color: orange;
+    border-color: orange;
+  }
+
+  #card3 {
+    background-color: purple;
+    border-color: purple;
+  }
+
+  #card4 {
+    background-color: purple;
+    border-color: purple;
+  }
+
+  #card5 {
+    background-color: yellow;
+    border-color: yellow;
+  }
+
+  #card6 {
+    background-color: yellow;
+    border-color: yellow;
+  }
+
+  #card7 {
+    background-color: red;
+    border-color: red;
+  }
+
+  #card8 {
+    background-color: red;
+    border-color: red;
+  }
+
+  #card9 {
+    background-color: blue;
+    border-color: blue;
+  }
+
+  #card10 {
+    background-color: blue;
+    border-color: blue;
+  }
+
+  #card11 {
+    background-color: green;
+    border-color: green;
+  }
+
+  #card12 {
+    background-color: green;
+    border-color: green;
+  }
+}
+
+/* button styling */
+
+.start-button {
+  color: lightgreen;
+  border-radius: 25px;
+}
+
+.reset-button {
+  color: lightcoral;
+  border-radius: 25px;
+}
+
+/* card animations */
+
+/* .flipFaceUp {
+    animation: normal;
+  }
+  
+  .flipFaceDown {
+    animation: normal;
+  }
+  
+  .fadeOut {
+    opacity: 0;
+  } */
+
+.flip-cards {
+  transition: all 1s; /* smooth animations */
+  perspective: 600px; /*3D effect supposedly */
+  height: 30px;
+  width: 20px;
+}
+
+/* styling for timer, headers, game messages, etc */
+
+.timer {
+  border-radius: 50px;
+  color: black;
+  font-size: medium;
+}
+
+.title {
+  color: chocolate;
+  font-size: large;
+}
+
+.completionMessage {
+  color: chocolate;
+  font-size: larger;
+}
