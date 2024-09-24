@@ -1,0 +1,148 @@
+body {
+  margin: 0;
+}
+
+.stage {
+  /* neutral color for the page BG */
+  background-color: beige;
+  min-width: 100vh;
+  min-height: 100vh;
+  display: grid;
+
+  /* grid size 4x3 */
+
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto auto auto;
+}
+
+/* color for 'facedown' cards */
+
+.card {
+  color: rgba(91, 87, 83, 0.868);
+  border-color: goldenrod;
+  height: 40px;
+  width: 30px;
+  border-width: 3px;
+  backface-visibility: hidden; /* only see one side of card */
+}
+
+/* Six color pairs for the cards with black text on each*/
+
+.card-text {
+  color: black;
+  font-size: 20px;
+}
+
+.flipped {
+  #card1 {
+    background-color: orange;
+    border-color: orange;
+  }
+
+  #card2 {
+    background-color: orange;
+    border-color: orange;
+  }
+
+  #card3 {
+    background-color: purple;
+    border-color: purple;
+  }
+
+  #card4 {
+    background-color: purple;
+    border-color: purple;
+  }
+
+  #card5 {
+    background-color: yellow;
+    border-color: yellow;
+  }
+
+  #card6 {
+    background-color: yellow;
+    border-color: yellow;
+  }
+
+  #card7 {
+    background-color: red;
+    border-color: red;
+  }
+
+  #card8 {
+    background-color: red;
+    border-color: red;
+  }
+
+  #card9 {
+    background-color: blue;
+    border-color: blue;
+  }
+
+  #card10 {
+    background-color: blue;
+    border-color: blue;
+  }
+
+  #card11 {
+    background-color: green;
+    border-color: green;
+  }
+
+  #card12 {
+    background-color: green;
+    border-color: green;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+/* button styling */
+
+.start-button {
+  color: lightgreen;
+  border-radius: 25px;
+}
+
+.reset-button {
+  color: lightcoral;
+  border-radius: 25px;
+}
+
+/* card animations */
+
+.flip-cards {
+  transition: all 1s; /* smooth animations */
+  perspective: 600px; /*3D effect supposedly */
+}
+
+/* styling for timer, headers, game messages, etc */
+
+.timer {
+  border-radius: 50px;
+  color: black;
+  font-size: 25px;
+}
+
+.title {
+  color: chocolate;
+  font-size: 80px;
+  display: flex;
+  justify-content: center;
+}
+
+.completionMessage {
+  color: chocolate;
+  font-size: 80px;
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .card {
+    height: 60px;
+    width: 50px;
+  }
+}
