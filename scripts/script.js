@@ -28,10 +28,12 @@ const shuffleArray = (array) => {
 const createCard = (symbol) => {
 	// DOM creates new div element to represent the card
 	const card = document.createElement("div");
+	let cardFront = document.createElement("div");
+	let cardBack = document.createElement("div");
 	// class .card
 	card.classList.add("card");
-	card.appendChild("div").classList.add("card_front");
-	card.appendChild("div").classList.add("card_back");
+	card.appendChild(cardFront).classList.add("card_front");
+	card.appendChild(cardBack).classList.add("card_back");
 	// unique symbol for each card
 	card.dataset.symbol = symbol;
 	card.querySelector(".card_back").textContent = symbol;
