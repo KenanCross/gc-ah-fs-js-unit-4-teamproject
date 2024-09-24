@@ -1,58 +1,58 @@
 body {
-  margin: 0;
+	margin: 0;
 }
 
 .stage {
-  /* neutral color for the page BG */
-  background-color: beige;
-  min-width: 100vh;
-  min-height: 100vh;
-  display: grid;
+	/* neutral color for the page BG */
+	background-color: beige;
+	min-width: 100vh;
+	min-height: 100vh;
+	display: grid;
 
-  /* grid size 4x3 */
+	/* grid size 4x3 */
 
-  grid-template-columns: auto auto auto auto;
-  grid-template-rows: auto auto auto;
-  gap: 15px;
+	grid-template-columns: auto auto auto auto;
+	grid-template-rows: auto auto auto;
+	gap: 15px;
 }
 
 /* color for 'facedown' cards */
 
 .card {
-  background-color: rgba(91, 87, 83, 0.868);
-  border-color: goldenrod;
-  height: 100%;
-  width: 100%;
-  border-width: 5px;
-  backface-visibility: hidden; /* only see one side of card */
-  transition: all 1s; /* smooth animations */
-  perspective: 600px; /*3D effect supposedly */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	/* background-color: rgba(91, 87, 83, 0.868); */
+	/* border-color: goldenrod; */
+	height: 100%;
+	width: 100%;
+	border-width: 5px;
+	backface-visibility: hidden; /* only see one side of card */
+	transition: all 1s; /* smooth animations */
+	perspective: 600px; /*3D effect supposedly */
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 /* Six color pairs for the cards with black text on each*/
 
 .card-text {
-  color: black;
-  font-size: 20px;
+	color: black;
+	font-size: 20px;
 }
 
 .hidden {
-  display: none;
+	display: none;
 }
 
 /* button styling */
 
 .start-button {
-  color: lightgreen;
-  border-radius: 25px;
+	color: lightgreen;
+	border-radius: 25px;
 }
 
 .reset-button {
-  color: lightcoral;
-  border-radius: 25px;
+	color: lightcoral;
+	border-radius: 25px;
 }
 
 /* card animations */
@@ -60,48 +60,56 @@ body {
 /* styling for timer, headers, game messages, etc */
 
 .timer {
-  border-radius: 50px;
-  color: black;
-  font-size: 25px;
+	border-radius: 50px;
+	color: black;
+	font-size: 25px;
 }
 
 .title {
-  color: chocolate;
-  font-size: 80px;
-  display: flex;
-  justify-content: center;
+	color: chocolate;
+	font-size: 80px;
+	display: flex;
+	justify-content: center;
 }
 
 .completionMessage {
-  color: chocolate;
-  font-size: 80px;
-  display: flex;
-  justify-content: center;
+	color: chocolate;
+	font-size: 80px;
+	display: flex;
+	justify-content: center;
 }
 
 /*-----------------------------------------------------------------------------------------------------*/
 
 .flipped {
-  transform: translateX(-100%) rotateY(-180deg);
+	transform: translateX(-100%) rotateY(-180deg);
 }
 
-.card__face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  line-height: 260px;
-  color: white;
-  text-align: center;
-  font-weight: bold;
-  font-size: 40px;
-  backface-visibility: hidden;
+.card_face {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	line-height: 260px;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+	font-size: 40px;
+	backface-visibility: hidden;
 }
 
-.card__face--front {
-  background: crimson;
+.card .card_front {
+	width: 100%;
+	height: 100%;
+	background: crimson;
 }
 
-.card__face--back {
-  background: slateblue;
-  transform: rotateY(180deg);
+.card .card_back {
+	background: slateblue;
+	width: inherit;
+	height: inherit;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: xx-large;
+	transform: rotateY(180deg);
 }

@@ -32,8 +32,8 @@ const createCard = (symbol) => {
 	let cardBack = document.createElement("div");
 	// class .card
 	card.classList.add("card");
-	card.appendChild(cardFront).classList.add("card_front");
-	card.appendChild(cardBack).classList.add("card_back");
+	card.appendChild(cardFront).classList.add("card_face", "card_front");
+	card.appendChild(cardBack).classList.add("card_face", "card_back");
 	// unique symbol for each card
 	card.dataset.symbol = symbol;
 	card.querySelector(".card_back").textContent = symbol;
@@ -72,6 +72,7 @@ const startGame = () => {
 
 	getCards.forEach((e) => {
 		e.addEventListener("click", (e) => {
+			console.log(e);
 			flipCards(e); //flip this card over
 			if (!cardArray.length || cardArray.length < 1) {
 				//if card array is less than 1 or empty.
@@ -118,8 +119,8 @@ resetBtn.addEventListener("click", startGame);
 // });
 
 const compareCards = (cardArray) => {
-	let card1 = cardArray[0].childNode[0].textContent; //get value of card 1
-	let card2 = cardArray[1].childNode[0].textContent; //get value of card 2
+	let card1 = cardArray[0].dataset.symbol; //get value of card 1
+	let card2 = cardArray[1].dataset.symbol; //get value of card 2
 
 	if (card1 === card2) {
 		//user chose wisely! hide the cards!
@@ -133,6 +134,7 @@ const compareCards = (cardArray) => {
 };
 
 const flipCards = (card = "all") => {
+	console.log(card);
 	if (card === "all") {
 		//if reset has been pushed, then flip all the cards back down.
 		let flippedCards = document.querySelectorAll(".flipped");
