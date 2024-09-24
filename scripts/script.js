@@ -1,7 +1,7 @@
 // DOM elements - to be named whatever the element ID is in HTML
-const gameBoard = document.getElementById('gameBoard');
-const startBtn = document.getElementById('startBtn');
-const resetBtn = document.getElementById('resetBtn');
+const gameBoard = document.getElementById('stage');
+const startBtn = document.getElementById('start');
+const resetBtn = document.getElementById('reset');
 const timerDisplay = document.getElementById('timer');
 
 // Array of symbols that will be used for the cards
