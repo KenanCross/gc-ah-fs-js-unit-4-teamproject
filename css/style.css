@@ -28,9 +28,7 @@ body {
 	transform-style: preserve-3d;
 	transform-origin: center right;
 	transition: transform 1s;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	user-select: none;
 }
 
 /* Six color pairs for the cards with black text on each*/
@@ -41,7 +39,9 @@ body {
 }
 
 .hidden {
-	display: none;
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s 0.5s, opacity 0.5s linear;
 }
 
 /* button styling */
@@ -96,6 +96,7 @@ body {
 	font-weight: bold;
 	font-size: 40px;
 	backface-visibility: hidden;
+	pointer-events: none;
 }
 
 .card .card_front {
@@ -113,4 +114,5 @@ body {
 	align-items: center;
 	font-size: xx-large;
 	transform: rotateY(180deg);
+	pointer-events: none;
 }

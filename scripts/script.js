@@ -8,6 +8,7 @@ const timerDisplay = document.getElementById("timer");
 const symbols = ["🍎", "🍌", "🍍", "🍉", "🍊", "🍓"];
 // Arrays to store the cards and flipped cards
 let cards = [];
+let cardArray = [];
 let flippedCards = [];
 // Counter for matched pairs
 let matchedPairs = 0;
@@ -67,23 +68,14 @@ const startGame = () => {
 		gameBoard.appendChild(card);
 	});
 	// CardArray is for passing to the evaluator fuction compareCards
-	cardArray = [];
+
 	const getCards = document.querySelectorAll(".card");
-	console.log(getCards);
 
 	getCards.forEach((cardElement) => {
 		cardElement.addEventListener("click", (event) => {
 			const clickedCard = event.currentTarget; // Get the clicked card element
 			flipCards(clickedCard); // Flip this card over
-
-			// If no cards are flipped yet, store the current card
-			if (cardArray.length === 0) {
-				cardArray[0] = clickedCard;
-			} else {
-				// Store the second card and compare
-				cardArray[1] = clickedCard;
-				compareCards(cardArray);
-			}
+			addCardSelection(cardArray, clickedCard);
 		});
 	});
 
@@ -104,23 +96,19 @@ startBtn.addEventListener("click", startGame);
 resetBtn.addEventListener("click", startGame);
 //  Memory Match Script created by Kenan Cross & Durell Wilson
 //
-
-// cardArray = [];
-// const getCards = document.querySelectorAll(".card");
-
-// getCards.forEach((e) => {
-// 	e.addEventListener("click", (e) => {
-// 		flipCards(e); //flip this card over
-// 		if (!cardArray.length || cardArray.length < 1) {
-// 			//if card array is less than 1 or empty.
-// 			cardArray[0] = e; //add this card to cardArray 1st index.
-// 		} else {
-// 			cardArray[1] = e; //add this card to cardArray 2nd index.
-// 			compareCards(cardArray);
-// 		}
-// 	});
-// });
-
+const addCardSelection = (cardArray, card) => {
+	// If no cards are flipped yet, store the current card
+	if (cardArray.length === 0) {
+		cardArray[0] = card;
+		console.log(cardArray);
+	} else {
+		// Store the second card and compare
+		cardArray[1] = card;
+		setTimeout(() => {
+			compareCards(cardArray);
+		}, "1000");
+	}
+};
 const compareCards = (cardArray) => {
 	let card1 = cardArray[0].dataset.symbol; //get value of card 1
 	let card2 = cardArray[1].dataset.symbol; //get value of card 2
@@ -128,16 +116,17 @@ const compareCards = (cardArray) => {
 	if (card1 === card2) {
 		//user chose wisely! hide the cards!
 		hideCards(cardArray);
+		cardArray.length = 0;
 	} else {
 		//user picked incorrectly, so flip the cards back down.
 		cardArray.forEach((e) => {
 			flipCards(e);
 		});
+		cardArray.length = 0;
 	}
 };
 
 const flipCards = (card = "all") => {
-	console.log(card);
 	if (card === "all") {
 		//if reset has been pushed, then flip all the cards back down.
 		let flippedCards = document.querySelectorAll(".flipped");
