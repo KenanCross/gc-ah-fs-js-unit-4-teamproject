@@ -69,16 +69,19 @@ const startGame = () => {
 	// CardArray is for passing to the evaluator fuction compareCards
 	cardArray = [];
 	const getCards = document.querySelectorAll(".card");
+	console.log(getCards);
 
-	getCards.forEach((e) => {
-		e.addEventListener("click", (e) => {
-			console.log(e);
-			flipCards(e); //flip this card over
-			if (!cardArray.length || cardArray.length < 1) {
-				//if card array is less than 1 or empty.
-				cardArray[0] = e; //add this card to cardArray 1st index.
+	getCards.forEach((cardElement) => {
+		cardElement.addEventListener("click", (event) => {
+			const clickedCard = event.currentTarget; // Get the clicked card element
+			flipCards(clickedCard); // Flip this card over
+
+			// If no cards are flipped yet, store the current card
+			if (cardArray.length === 0) {
+				cardArray[0] = clickedCard;
 			} else {
-				cardArray[1] = e; //add this card to cardArray 2nd index.
+				// Store the second card and compare
+				cardArray[1] = clickedCard;
 				compareCards(cardArray);
 			}
 		});

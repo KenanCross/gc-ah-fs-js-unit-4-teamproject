@@ -21,12 +21,13 @@ body {
 .card {
 	/* background-color: rgba(91, 87, 83, 0.868); */
 	/* border-color: goldenrod; */
-	height: 100%;
+	position: relative;
 	width: 100%;
-	border-width: 5px;
-	backface-visibility: hidden; /* only see one side of card */
-	transition: all 1s; /* smooth animations */
-	perspective: 600px; /*3D effect supposedly */
+	height: 100%;
+	cursor: pointer;
+	transform-style: preserve-3d;
+	transform-origin: center right;
+	transition: transform 1s;
 	display: flex;
 	align-items: center;
 	justify-content: center;
