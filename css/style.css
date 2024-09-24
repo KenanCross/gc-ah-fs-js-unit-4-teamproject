@@ -20,9 +20,9 @@ body {
 .card {
   color: rgba(91, 87, 83, 0.868);
   border-color: goldenrod;
-  height: 30px;
-  width: 20px;
-  border-width: 5px;
+  height: 40px;
+  width: 30px;
+  border-width: 3px;
   backface-visibility: hidden; /* only see one side of card */
 }
 
@@ -113,18 +113,6 @@ body {
 
 /* card animations */
 
-/* .flipFaceUp {
-    animation: normal;
-  }
-  
-  .flipFaceDown {
-    animation: normal;
-  }
-  
-  .fadeOut {
-    opacity: 0;
-  } */
-
 .flip-cards {
   transition: all 1s; /* smooth animations */
   perspective: 600px; /*3D effect supposedly */
@@ -135,22 +123,26 @@ body {
 .timer {
   border-radius: 50px;
   color: black;
-  font-size: medium;
+  font-size: 25px;
 }
 
 .title {
   color: chocolate;
-  font-size: large;
+  font-size: 80px;
+  display: flex;
+  justify-content: center;
 }
 
 .completionMessage {
   color: chocolate;
-  font-size: larger;
+  font-size: 80px;
+  display: flex;
+  justify-content: center;
 }
 
 @media only screen and (min-width: 768px) {
   .card {
-    height: 50px;
-    width: 40px;
+    height: 60px;
+    width: 50px;
   }
 }
