@@ -32,8 +32,9 @@ const createCard = (symbol) => {
     card.classList.add('card');
     // unique symbol for each card
     card.dataset.symbol = symbol;
+    card.textContent = symbol;
     // on click trigger the flipCard function
-    card.addEventListener('click', flipCard);
+    // card.addEventListener('click', flipCard);
     // DOM creates new div element to represent the front of the card -- still need to create a fuction for flipCard
     return card;
 }; 
@@ -60,6 +61,23 @@ const startGame = () => {
         cards.push(card);
         gameBoard.appendChild(card);
     });
+// CardArray is for passing to the evaluator fuction compareCards
+    cardArray = [];
+    const getCards = document.querySelectorAll(".card");
+    
+    getCards.forEach((e) => {
+        e.addEventListener("click", (e) => {
+            flipCards(e); //flip this card over
+            if (!cardArray.length || cardArray.length < 1) {
+                //if card array is less than 1 or empty.
+                cardArray[0] = e; //add this card to cardArray 1st index.
+            } else {
+                cardArray[1] = e; //add this card to cardArray 2nd index.
+                compareCards(cardArray);
+            }
+        });
+    });
+
 // start the timer variables
     startTime = Date.now();
     // setInterval to update the timer https://developer.mozilla.org/en-US/docs/Web/API/setInterval
@@ -78,21 +96,21 @@ resetBtn.addEventListener('click', startGame);
 //  Memory Match Script created by Kenan Cross & Durell Wilson
 //
 
-cardArray = [];
-const getCards = document.querySelectorAll(".card");
+// cardArray = [];
+// const getCards = document.querySelectorAll(".card");
 
-getCards.forEach((e) => {
-	e.addEventListener("click", (e) => {
-		flipCards(e); //flip this card over
-		if (!cardArray.length || cardArray.length < 1) {
-			//if card array is less than 1 or empty.
-			cardArray[0] = e; //add this card to cardArray 1st index.
-		} else {
-			cardArray[1] = e; //add this card to cardArray 2nd index.
-			compareCards(cardArray);
-		}
-	});
-});
+// getCards.forEach((e) => {
+// 	e.addEventListener("click", (e) => {
+// 		flipCards(e); //flip this card over
+// 		if (!cardArray.length || cardArray.length < 1) {
+// 			//if card array is less than 1 or empty.
+// 			cardArray[0] = e; //add this card to cardArray 1st index.
+// 		} else {
+// 			cardArray[1] = e; //add this card to cardArray 2nd index.
+// 			compareCards(cardArray);
+// 		}
+// 	});
+// });
 
 const compareCards = (cardArray) => {
 	let card1 = cardArray[0].childNode[0].textContent; //get value of card 1
