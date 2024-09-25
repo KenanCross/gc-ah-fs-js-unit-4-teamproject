@@ -17,7 +17,9 @@ let currentScore = 0;
 // Variables for the timer
 let timerInterval;
 let startTime;
-let userName;
+// Variables for the username
+let userName = "";
+let userNameSet = false;
 
 
 // This function shuffles the array of symbols -- https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
@@ -48,10 +50,22 @@ const createCard = (symbol) => {
 	// DOM creates new div element to represent the front of the card -- still need to create a fuction for flipCard
 	return card;
 };
-
+// This function prompts for username and sets the userName variable
+const promptForUsername = () => {
+    if (!userNameSet) {
+        let name = prompt("Please enter your name");
+        if (name !== null && name.trim() !== "") {
+            userName = name.trim();
+            userNameSet = true;
+        } else {
+            userName = "Player";
+            userNameSet = true;
+        }
+    }
+};
 // This function starts/resets the game
 const startGame = () => {
-    userName = prompt("Please enter your name");
+    promptForUsername();
 	// DOM to clear the game board
 	gameBoard.innerHTML = "";
 	// reempty array to store cards
@@ -61,6 +75,8 @@ const startGame = () => {
 	// counter for matched pairs
 	matchedPairs = 0;
 	currentScore = 0;
+	// DOM to modify the score display
+	score.textContent = "Score: 0";
 	// reset the timer
 	clearInterval(timerInterval);
 	// DOM to modify the timer display
