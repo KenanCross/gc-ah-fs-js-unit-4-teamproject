@@ -3,6 +3,7 @@ const gameBoard = document.getElementById("stage");
 const startBtn = document.getElementById("start");
 const resetBtn = document.getElementById("reset");
 const timerDisplay = document.getElementById("timer");
+const score = document.getElementById("score");
 
 // Array of symbols that will be used for the cards
 const symbols = ["🍎", "🍌", "🍍", "🍉", "🍊", "🍓"];
@@ -10,11 +11,14 @@ const symbols = ["🍎", "🍌", "🍍", "🍉", "🍊", "🍓"];
 let cards = [];
 let cardArray = [];
 let flippedCards = [];
-// Counter for matched pairs
+// Counter for matched pairs and score
 let matchedPairs = 0;
+let currentScore = 0;
 // Variables for the timer
 let timerInterval;
 let startTime;
+let userName;
+
 
 // This function shuffles the array of symbols -- https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 const shuffleArray = (array) => {
@@ -47,6 +51,7 @@ const createCard = (symbol) => {
 
 // This function starts/resets the game
 const startGame = () => {
+    userName = prompt("Please enter your name");
 	// DOM to clear the game board
 	gameBoard.innerHTML = "";
 	// reempty array to store cards
@@ -55,6 +60,7 @@ const startGame = () => {
 	flippedCards = [];
 	// counter for matched pairs
 	matchedPairs = 0;
+	currentScore = 0;
 	// reset the timer
 	clearInterval(timerInterval);
 	// DOM to modify the timer display
@@ -71,13 +77,9 @@ const startGame = () => {
 
 	const getCards = document.querySelectorAll(".card");
 
-	getCards.forEach((cardElement) => {
-		cardElement.addEventListener("click", (event) => {
-			const clickedCard = event.currentTarget; // Get the clicked card element
-			flipCards(clickedCard); // Flip this card over
-			addCardSelection(cardArray, clickedCard);
-		});
-	});
+    getCards.forEach((cardElement) => {
+        cardElement.addEventListener("click", handleCardClick);
+    });
 
 	// start the timer variables
 	startTime = Date.now();
@@ -85,12 +87,32 @@ const startGame = () => {
 	timerInterval = setInterval(updateTimer, 1000);
 };
 
+const handleCardClick = (event) => {
+    const clickedCard = event.currentTarget;
+    
+    // Prevent clicking on already flipped or matched cards
+    if (clickedCard.classList.contains('flipped') || clickedCard.classList.contains('hidden')) {
+        return;
+    }
+
+    // Prevent clicking more than two cards at a time
+    if (cardArray.length >= 2) {
+        return;
+    }
+
+    flipCards(clickedCard);
+    addCardSelection(cardArray, clickedCard);
+};
 // This function updates the timer display
 const updateTimer = () => {
 	const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
 	timerDisplay.textContent = `Time: ${elapsedTime}s`;
 };
-
+// This function updates the score display
+const updateScore = (points) => {
+    currentScore += points;
+    score.textContent = `Score: ${currentScore}`; 
+};
 // Event listeners for the start and reset buttons
 startBtn.addEventListener("click", startGame);
 resetBtn.addEventListener("click", startGame);
@@ -106,7 +128,7 @@ const addCardSelection = (cardArray, card) => {
 		cardArray[1] = card;
 		setTimeout(() => {
 			compareCards(cardArray);
-		}, "1000");
+		}, 1000);
 	}
 };
 const compareCards = (cardArray) => {
@@ -115,6 +137,8 @@ const compareCards = (cardArray) => {
 
 	if (card1 === card2) {
 		//user chose wisely! hide the cards!
+		matchedPairs++;
+		updateScore(1);
 		hideCards(cardArray);
 		cardArray.length = 0;
 	} else {
@@ -143,8 +167,9 @@ const hideCards = (cardArray) => {
 		e.classList.toggle("hidden");
 	});
 	let cardsHidden = document.querySelectorAll(".hidden");
-	if (cardsHidden.length === 12) {
-		endGame();
+	if (matchedPairs === symbols.length) {
+		clearInterval(timerInterval);
+        alert(`Congratulations ${userName}! You completed the game in ${timerDisplay.textContent.slice(6)}`);
 	} else {
 		cardsHidden = "";
 	}
