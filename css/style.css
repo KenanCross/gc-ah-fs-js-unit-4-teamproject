@@ -1,4 +1,6 @@
 body {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 600;
   margin: 0;
 }
 
@@ -9,11 +11,24 @@ body {
   height: 75vh;
   display: grid;
   margin: auto;
+  box-shadow: 7px 7px rgb(157, 156, 156);
+}
 
-  /* grid size 4x3 */
+.easy /* 12 cards*/ {
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto auto;
+  gap: 15px;
+}
 
+.medium /* 16 cards*/ {
   grid-template-columns: auto auto auto auto;
-  grid-template-rows: auto auto auto;
+  grid-template-rows: auto auto auto auto;
+  gap: 15px;
+}
+
+.hard /*24 cards*/ {
+  grid-template-columns: auto auto auto auto auto auto;
+  grid-template-rows: auto auto auto auto;
   gap: 15px;
 }
 
@@ -56,12 +71,18 @@ body {
   border-radius: 25px;
   font-size: 20px;
   margin-right: 60px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 600;
+  box-shadow: 5px 5px rgb(157, 156, 156);
 }
 
 .reset-button {
   background-color: rgb(223, 59, 59);
   border-radius: 25px;
   font-size: 20px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 600;
+  box-shadow: 5px 5px rgb(157, 156, 156);
 }
 
 /* card animations */
@@ -75,18 +96,18 @@ body {
 }
 
 .title {
-  color: chocolate;
+  color: rgb(163, 54, 11);
   font-size: 65px;
   display: flex;
   justify-content: center;
 }
 
-.completionMessage {
+/* .completionMessage {
   color: chocolate;
   font-size: 80px;
   display: flex;
   justify-content: center;
-}
+}*/
 
 /*-----------------------------------------------------------------------------------------------------*/
 
