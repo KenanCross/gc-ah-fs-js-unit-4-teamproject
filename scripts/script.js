@@ -100,6 +100,7 @@ const promptDifficulty = () => {
 };
 // This function starts/resets the game
 const startGame = () => {
+	gameBoard.classList.remove("hard", "easy", "medium");
 	promptForUsername();
 	promptDifficulty();
 	// DOM to clear the game board
