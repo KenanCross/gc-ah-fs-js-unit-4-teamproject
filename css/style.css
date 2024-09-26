@@ -1,101 +1,109 @@
 body {
-  font-family: "Roboto Condensed", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
+	font-family: "Roboto Condensed", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
-main{
-  display: flex;
-  flex-direction: column;
-  width: 90cqw;
-  height: 95cqh;
-  margin: auto;
+main {
+	display: flex;
+	flex-direction: column;
+	width: 90cqw;
+	height: 95cqh;
+	margin: auto;
+	max-width: 1200px;
+	max-height: 1200px;
+}
+#stageWrapper {
+	background-color: beige;
+	padding: 3cqw;
+	border: 9px solid orange;
+	border-radius: 25px;
+	height: inherit;
 }
 .stage {
-  /* neutral color for the page BG */
-  background-color: beige;
-  display: grid;
-  margin: auto;
-  width: 100%;
-  height: 100cqw;
+	/* neutral color for the page BG */
+
+	display: grid;
+	margin: auto;
+	width: 100%;
+	height: 100%;
 }
 
 .easy /* 12 cards*/ {
-  grid-template-columns: auto auto auto;
-  grid-template-rows: auto auto auto auto;
-  gap: 15px;
+	grid-template-columns: auto auto auto;
+	grid-template-rows: auto auto auto auto;
+	gap: 15px;
 }
 
 .medium /* 16 cards*/ {
-  grid-template-columns: auto auto auto auto;
-  grid-template-rows: auto auto auto auto;
-  gap: 15px;
+	grid-template-columns: auto auto auto auto;
+	grid-template-rows: auto auto auto auto;
+	gap: 15px;
 }
 
 .hard /*24 cards*/ {
-  grid-template-columns: auto auto auto auto auto auto;
-  grid-template-rows: auto auto auto auto;
-  gap: 15px;
+	grid-template-columns: auto auto auto auto auto auto;
+	grid-template-rows: auto auto auto auto;
+	gap: 15px;
 }
 
 .card {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  transform-style: preserve-3d;
-  transform-origin: center right;
-  transition: transform 1s;
-  user-select: none;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	transform-style: preserve-3d;
+	transform-origin: center right;
+	transition: transform 1s;
+	user-select: none;
 }
 
 .hidden {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s 0.5s, opacity 0.5s linear;
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s 0.5s, opacity 0.5s linear;
 }
 
 /* button styling */
 
 .wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	margin-bottom: 15px;
 }
-.wrapper div{
-  flex: 0 1 33%;
-  text-align: center;
+.wrapper div {
+	flex: 0 1 33%;
+	text-align: center;
 }
 
 #score {
-  font-size: 25px;
+	font-size: 25px;
 }
 
-.buttons-wrapper{
-  display: flex;
-  padding-bottom: 20px;
-  gap: 30px;
-  align-items: center;
+.buttons-wrapper {
+	display: flex;
+	gap: 15px;
+	align-items: center;
 }
-#start{
-  background-color: rgb(45, 228, 45);
+#start {
+	background-color: rgb(45, 228, 45);
 }
-#reset{
-  background-color: rgb(223, 59, 59);
+#reset {
+	background-color: rgb(223, 59, 59);
 }
 button {
-  border-radius: 5px;
-  font-size: 23px;
-  padding: 15px;
-  font-weight: 400;
-  font-style: normal;
-  text-transform: uppercase;
-  box-shadow: 5px 5px rgb(157, 156, 156);
-  flex: 0 1 50%;
+	border-radius: 5px;
+	font-size: clamp(8px, 1.5cqw, 16px);
+	font-weight: 800;
+	padding: 1cqw;
+	font-style: normal;
+	text-transform: uppercase;
+	box-shadow: 5px 5px rgb(157, 156, 156);
+	flex: 0 1 50%;
 }
 
 /* card animations */
@@ -103,16 +111,15 @@ button {
 /* styling for timer, headers, game messages, etc */
 
 .timer {
-  padding-bottom: 20px;
-  color: black;
-  font-size: 25px;
+	color: black;
+	font-size: 25px;
 }
 
 .title {
-  color: rgb(163, 54, 11);
-  font-size: 65px;
-  display: flex;
-  justify-content: center;
+	color: rgb(163, 54, 11);
+	font-size: 65px;
+	display: flex;
+	justify-content: center;
 }
 
 /* .completionMessage {
@@ -125,41 +132,41 @@ button {
 /*-----------------------------------------------------------------------------------------------------*/
 
 .flipped {
-  transform: translateX(-100%) rotateY(-180deg);
+	transform: translateX(-100%) rotateY(-180deg);
 }
 
 .card_face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  line-height: 260px;
-  color: white;
-  text-align: center;
-  font-weight: bold;
-  font-size: 40px;
-  backface-visibility: hidden;
-  pointer-events: none;
-  border-radius: 15px;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	line-height: 260px;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+	font-size: 40px;
+	backface-visibility: hidden;
+	pointer-events: none;
+	border-radius: 15px;
 }
 
 .card .card_front {
-  width: 100%;
-  height: 100%;
-  background: #23292c;
-  background-image: url(../image/GC_After_Dark_Shirt_Logo_2019-01.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+	width: 100%;
+	height: 100%;
+	background: #23292c;
+	background-image: url(../image/GC_After_Dark_Shirt_Logo_2019-01.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 .card .card_back {
-  background: lightslategray;
-  width: inherit;
-  height: inherit;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 80px;
-  transform: rotateY(180deg);
-  pointer-events: none;
+	background: lightslategray;
+	width: inherit;
+	height: inherit;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 80px;
+	transform: rotateY(180deg);
+	pointer-events: none;
 }

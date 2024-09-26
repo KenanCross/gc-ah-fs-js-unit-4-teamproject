@@ -10,7 +10,8 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-			rel="stylesheet" />
+			rel="stylesheet"
+		/>
 	</head>
 	<body>
 		<main>
@@ -24,12 +25,14 @@
 					<button id="start">Start Game</button>
 					<button id="reset">Reset Game</button>
 				</div>
+
 				<div id="score"></div>
 			</div>
 
 			<!-- Stage inside this will all the cards will come from js directly-->
-
-			<div id="stage" class="stage"></div>
+			<div id="stageWrapper">
+				<div id="stage" class="stage"></div>
+			</div>
 		</main>
 		<footer><script src="scripts/script.js"></script></footer>
 	</body>
