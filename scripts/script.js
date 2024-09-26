@@ -6,7 +6,7 @@ const timerDisplay = document.getElementById("timer");
 const score = document.getElementById("score");
 
 // Array of symbols that will be used for the cards
-const symbols = ["🍎", "🍌", "🍍", "🍉", "🍊", "🍓"];
+let symbols = "";
 // Arrays to store the cards and flipped cards
 let cards = [];
 let cardArray = [];
@@ -20,7 +20,11 @@ let startTime;
 // Variables for the username
 let userName = "";
 let userNameSet = false;
-
+// Variables for difficulty
+let difficulty = false;
+const easy = 12;
+const medium = 18;
+const hard = 24;
 
 // This function shuffles the array of symbols -- https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 const shuffleArray = (array) => {
@@ -52,22 +56,55 @@ const createCard = (symbol) => {
 };
 // This function prompts for username and sets the userName variable
 const promptForUsername = () => {
-    if (!userNameSet) {
-        let name = prompt("Please enter your name");
-        if (name !== null && name.trim() !== "") {
-            userName = name.trim();
-            userNameSet = true;
-        } else {
-            userName = "Player";
-            userNameSet = true;
-        }
-    }
+	if (!userNameSet) {
+		let name = prompt("Please enter your name");
+		if (name !== null && name.trim() !== "") {
+			userName = name.trim();
+			userNameSet = true;
+		} else {
+			userName = "Player";
+			userNameSet = true;
+		}
+	}
+};
+const promptDifficulty = () => {
+	if (!difficulty) {
+		let difficulty = prompt("Choose Your Difficulty! Enter 1, 2 or 3!");
+		if (difficulty < 1 || difficulty > 3) {
+			difficulty = false;
+			promptDifficulty();
+		} else if (parseInt(difficulty) === 1) {
+			symbols = ["🍎", "🍌", "🍍", "🍉", "🍊", "🍓"];
+			level = "easy";
+		} else if (parseInt(difficulty) === 2) {
+			symbols = ["🍎", "🍌", "🍍", "🍉", "🍊", "🍓", "❤️", "♦️"];
+			level = "medium";
+		} else {
+			symbols = [
+				"🍎",
+				"🍌",
+				"🍍",
+				"🍉",
+				"🍊",
+				"🍓",
+				"❤️",
+				"♦️",
+				"♣️",
+				"♠️",
+				"🐶",
+				"🦒",
+			];
+			level = "hard";
+		}
+	}
 };
 // This function starts/resets the game
 const startGame = () => {
-    promptForUsername();
+	promptForUsername();
+	promptDifficulty();
 	// DOM to clear the game board
 	gameBoard.innerHTML = "";
+	gameBoard.classList.add(level);
 	// reempty array to store cards
 	cards = [];
 	// reempty array to store flipped cards
@@ -93,9 +130,9 @@ const startGame = () => {
 
 	const getCards = document.querySelectorAll(".card");
 
-    getCards.forEach((cardElement) => {
-        cardElement.addEventListener("click", handleCardClick);
-    });
+	getCards.forEach((cardElement) => {
+		cardElement.addEventListener("click", handleCardClick);
+	});
 
 	// start the timer variables
 	startTime = Date.now();
@@ -104,20 +141,23 @@ const startGame = () => {
 };
 
 const handleCardClick = (event) => {
-    const clickedCard = event.currentTarget;
-    
-    // Prevent clicking on already flipped or matched cards
-    if (clickedCard.classList.contains('flipped') || clickedCard.classList.contains('hidden')) {
-        return;
-    }
+	const clickedCard = event.currentTarget;
 
-    // Prevent clicking more than two cards at a time
-    if (cardArray.length >= 2) {
-        return;
-    }
+	// Prevent clicking on already flipped or matched cards
+	if (
+		clickedCard.classList.contains("flipped") ||
+		clickedCard.classList.contains("hidden")
+	) {
+		return;
+	}
 
-    flipCards(clickedCard);
-    addCardSelection(cardArray, clickedCard);
+	// Prevent clicking more than two cards at a time
+	if (cardArray.length >= 2) {
+		return;
+	}
+
+	flipCards(clickedCard);
+	addCardSelection(cardArray, clickedCard);
 };
 // This function updates the timer display
 const updateTimer = () => {
@@ -126,8 +166,8 @@ const updateTimer = () => {
 };
 // This function updates the score display
 const updateScore = (points) => {
-    currentScore += points;
-    score.textContent = `Score: ${currentScore}`; 
+	currentScore += points;
+	score.textContent = `Score: ${currentScore}`;
 };
 // Event listeners for the start and reset buttons
 startBtn.addEventListener("click", startGame);
@@ -185,7 +225,11 @@ const hideCards = (cardArray) => {
 	let cardsHidden = document.querySelectorAll(".hidden");
 	if (matchedPairs === symbols.length) {
 		clearInterval(timerInterval);
-        alert(`Congratulations ${userName}! You completed the game in ${timerDisplay.textContent.slice(6)}`);
+		alert(
+			`Congratulations ${userName}! You completed the game in ${timerDisplay.textContent.slice(
+				6
+			)}`
+		);
 	} else {
 		cardsHidden = "";
 	}
