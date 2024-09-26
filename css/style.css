@@ -1,6 +1,7 @@
 body {
-  font-family: "Courier New", Courier, monospace;
-  font-weight: 600;
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
   margin: 0;
 }
 
@@ -11,7 +12,6 @@ body {
   height: 75vh;
   display: grid;
   margin: auto;
-  box-shadow: 7px 7px rgb(157, 156, 156);
 }
 
 .easy /* 12 cards*/ {
@@ -68,20 +68,24 @@ body {
 
 .start-button {
   background-color: rgb(45, 228, 45);
-  border-radius: 25px;
-  font-size: 20px;
+  border-radius: 5px;
+  font-size: 23px;
   margin-right: 60px;
-  font-family: "Courier New", Courier, monospace;
-  font-weight: 600;
+  padding: 15px;
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
   box-shadow: 5px 5px rgb(157, 156, 156);
 }
 
 .reset-button {
   background-color: rgb(223, 59, 59);
-  border-radius: 25px;
-  font-size: 20px;
-  font-family: "Courier New", Courier, monospace;
-  font-weight: 600;
+  border-radius: 5px;
+  font-size: 23px;
+  padding: 15px;
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
   box-shadow: 5px 5px rgb(157, 156, 156);
 }
 
